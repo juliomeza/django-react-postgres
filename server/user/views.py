@@ -10,9 +10,12 @@ class LoginView(APIView):
     permission_classes = [AllowAny]
     
     def post(self, request):
-        username = request.data.get('username')
+        # username = request.data.get('username')
+        # password = request.data.get('password')
+        # user = authenticate(username=username, password=password)
+        email = request.data.get('email')
         password = request.data.get('password')
-        user = authenticate(username=username, password=password)
+        user = authenticate(email=email, password=password)
         if user is not None:
             refresh = RefreshToken.for_user(user)
             access = refresh.access_token
@@ -70,5 +73,5 @@ class AuthStatusView(APIView):
     def get(self, request):
         user = request.user
         if user and user.is_authenticated:
-            return Response({'user': user.username}, status=status.HTTP_200_OK)
+            return Response({'user': {'first_name': user.first_name, 'last_name': user.last_name}}, status=status.HTTP_200_OK)
         return Response({'user': None}, status=status.HTTP_200_OK)

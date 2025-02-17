@@ -3,7 +3,7 @@ import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import AuthContext from '../context/AuthContext';
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
   const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
@@ -24,8 +24,8 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
-            label="Username"
-            name="username"
+            label="Email"
+            name="email"
             margin="normal"
             variant="outlined"
             onChange={handleChange}

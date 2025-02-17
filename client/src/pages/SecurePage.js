@@ -23,7 +23,7 @@ const SecurePage = () => {
         Página Segura
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Bienvenido, {user}!
+        Bienvenido, {user?.first_name}!
       </Typography>
       <Button variant="contained" color="secondary" onClick={logout}>
         Logout
