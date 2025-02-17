@@ -74,15 +74,25 @@ The system implements several security measures:
 - Secure session handling
 - Automatic token refresh handling
 
-## Development
+## Using this template
 
-To contribute to the project:
+To use this project as a starting point for your own application:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Clone the repository:
+```bash
+git clone https://github.com/josemeza2183/django-react-httponly-auth.git your-project-name
+```
+
+2. Move into your project directory:
+```bash
+cd your-project-name
+```
+
+3. Remove the existing git repository and initialize a new one:
+```bash
+rm -rf .git
+git init
+```
 
 ## License
 
