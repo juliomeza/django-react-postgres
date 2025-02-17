@@ -87,9 +87,3 @@ To contribute to the project:
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-## Contact
-
-[Your Name] - [your@email.com]
-
-Project Link: [https://github.com/yourusername/project]
