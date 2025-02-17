@@ -1,0 +1,30 @@
+# Directorios de entorno virtual de Python
+server/env/
+server/venv/
+
+# Archivos de base de datos de Django (si usas SQLite)
+server/db.sqlite3
+
+# Archivos de migración de Django
+server/*.pyc
+server/__pycache__/
+
+# Archivos de configuración de IDEs (como VS Code, PyCharm)
+.vscode/
+.idea/
+
+# Archivos de dependencias de Node.js (React)
+client/node_modules/
+client/.env
+client/.next/
+client/build/
+client/dist/
+
+# Archivos temporales de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Otros archivos de configuración que no desees subir
+*.log
+*.bak
+*.swp
