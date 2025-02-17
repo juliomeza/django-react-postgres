@@ -1,19 +1,34 @@
 import { useContext } from 'react';
+import { Container, Typography, Button, CircularProgress } from '@mui/material';
 import AuthContext from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 const SecurePage = () => {
   const { user, logout, loading } = useContext(AuthContext);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) {
+    return (
+      <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 4 }}>
+        <CircularProgress />
+        <Typography variant="h6" mt={2}>Cargando...</Typography>
+      </Container>
+    );
+  }
+
   if (!user) return <Navigate to="/login" />;
 
   return (
-    <div>
-      <h2>Página Segura</h2>
-      <p>Bienvenido, {user}!</p>
-      <button onClick={logout}>Logout</button>
-    </div>
+    <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Página Segura
+      </Typography>
+      <Typography variant="h6" gutterBottom>
+        Bienvenido, {user}!
+      </Typography>
+      <Button variant="contained" color="secondary" onClick={logout}>
+        Logout
+      </Button>
+    </Container>
   );
 };
 
