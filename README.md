@@ -80,7 +80,7 @@ To use this project as a starting point for your own application:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/josemeza2183/django-react-httponly-auth.git your-project-name
+git clone https://github.com/juliomeza/django-react-httponly-auth.git your-project-name
 ```
 
 2. Move into your project directory:
