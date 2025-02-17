@@ -20,10 +20,10 @@ const SecurePage = () => {
   return (
     <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 4 }}>
       <Typography variant="h4" gutterBottom>
-        Página Segura
+        Secure Page
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Bienvenido, {user?.first_name}!
+        Welcome, {user?.first_name}!
       </Typography>
       <Button variant="contained" color="secondary" onClick={logout}>
         Logout
