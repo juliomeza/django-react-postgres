@@ -6,7 +6,8 @@ from logistics.models import Address  # Asegúrate de que apps/logistics esté e
 class Enterprise(TimeStampedModel):
     name = models.CharField(max_length=100)
     lookup_code = models.CharField(max_length=50, unique=True)
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="enterprises")
+    is_active = models.BooleanField(default=True)
+    #status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="enterprises")
     address = models.ForeignKey(
         Address,
         on_delete=models.PROTECT,
@@ -21,7 +22,8 @@ class Enterprise(TimeStampedModel):
 class Client(TimeStampedModel):
     name = models.CharField(max_length=100)
     lookup_code = models.CharField(max_length=50, unique=True)
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="clients")
+    is_active = models.BooleanField(default=True)
+    #status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="clients")
     address = models.ForeignKey(
         Address,
         on_delete=models.PROTECT,
@@ -47,7 +49,8 @@ class Project(TimeStampedModel):
         validators=[MinLengthValidator(2)],
         help_text="Unique prefix for order numbers"
     )
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="projects")
+    is_active = models.BooleanField(default=True)
+    #status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="projects")
     client = models.ForeignKey(
         Client,
         on_delete=models.PROTECT,
