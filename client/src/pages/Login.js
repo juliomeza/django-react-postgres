@@ -4,20 +4,40 @@ import AuthContext from '../context/AuthContext';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
   const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(credentials);
+    setError(''); // Reinicia el mensaje de error
+    try {
+      await login(credentials);
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        setError('Incorrect credentials');
+      } else {
+        setError('Incorrect credentials.');
+      }
+    }
   };
 
   return (
     <Container maxWidth="xs" sx={{ mt: 8 }}>
-      <Box sx={{p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: 2, boxShadow: 3, bgcolor: 'background.paper', }}>
+      <Box
+        sx={{
+          p: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          borderRadius: 2,
+          boxShadow: 3,
+          bgcolor: 'background.paper',
+        }}
+      >
         <Typography variant="h4" component="h2" gutterBottom>
           Sign in
         </Typography>
@@ -39,7 +59,12 @@ const Login = () => {
             variant="outlined"
             onChange={handleChange}
           />
-          <Button fullWidth variant="contained" color="primary" type="submit">
+          {error && (
+            <Typography color="error" sx={{ mt: 2 }}>
+              {error}
+            </Typography>
+          )}
+          <Button fullWidth variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
             Sign in
           </Button>
         </form>
