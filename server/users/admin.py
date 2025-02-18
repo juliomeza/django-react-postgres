@@ -9,14 +9,14 @@ class RoleAdmin(admin.ModelAdmin):
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):  # Usa UserAdmin en lugar de ModelAdmin
-    list_display = ('email', 'first_name', 'last_name', 'role', 'project', 'is_staff', 'is_active')
+    list_display = ('email', 'first_name', 'last_name', 'role', 'is_staff', 'is_active')
     search_fields = ('email', 'first_name', 'last_name')
     list_filter = ()
 
     # Orden y organización de los campos en el formulario de edición
     fieldsets = (
         ("Personal Information", {'fields': ('first_name', 'last_name', 'email', 'password')}),
-        ("User Details", {'fields': ('username', 'role', 'project')}),
+        ("User Details", {'fields': ('username', 'role')}),
         ("Permissions", {'fields': ('is_staff', 'is_active', 'is_superuser', 'user_permissions')}),
         ("Fechas Importantes", {'fields': ('last_login', 'date_joined')}),
     )
@@ -25,7 +25,7 @@ class CustomUserAdmin(UserAdmin):  # Usa UserAdmin en lugar de ModelAdmin
     add_fieldsets = (
         ("Personal Information", {
             'classes': ('wide',),
-            'fields': ('email', 'first_name', 'last_name', 'username', 'password1', 'password2', 'role', 'project'),
+            'fields': ('email', 'first_name', 'last_name', 'username', 'password1', 'password2', 'role'),
         }),
         ("Permissions", {'fields': ('is_staff', 'is_active')}),
     )

@@ -1,7 +1,8 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
-from common.models import TimeStampedModel, Status
-from logistics.models import Address  # Asegúrate de que apps/logistics esté en INSTALLED_APPS
+from common.models import TimeStampedModel
+from logistics.models import Address
+from django.contrib.auth import get_user_model
 
 class Enterprise(TimeStampedModel):
     name = models.CharField(max_length=100)
@@ -56,6 +57,7 @@ class Project(TimeStampedModel):
         on_delete=models.PROTECT,
         related_name="projects"
     )
+    users = models.ManyToManyField(get_user_model(), related_name="projects")
     notes = models.TextField(blank=True)
     # Relaciones opcionales con logística:
     warehouses = models.ManyToManyField('logistics.Warehouse', related_name="projects", blank=True)
