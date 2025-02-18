@@ -9,6 +9,7 @@ class Inventory(TimeStampedModel):
     project = models.ForeignKey(Project, on_delete=models.PROTECT, related_name='inventories')
     warehouse = models.ForeignKey(Warehouse, on_delete=models.PROTECT, related_name='inventories')
     material = models.ForeignKey(Material, on_delete=models.PROTECT, related_name='inventories')
+    quantity = models.DecimalField(max_digits=10, decimal_places=2)
     location = models.CharField(max_length=50, blank=True)
     license_plate_id = models.CharField(
         max_length=50,
@@ -19,7 +20,6 @@ class Inventory(TimeStampedModel):
     license_plate = models.CharField(max_length=50, blank=True)
     lot = models.CharField(max_length=50, blank=True)
     vendor_lot = models.CharField(max_length=50, blank=True)
-    quantity = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f"{self.license_plate} ({self.quantity})"
