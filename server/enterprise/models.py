@@ -18,19 +18,25 @@ class Enterprise(TimeStampedModel):
     def __str__(self):
         return self.name
 
-class Owner(TimeStampedModel):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
-    phone = models.CharField(max_length=20, blank=True)
+class Client(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    lookup_code = models.CharField(max_length=50, unique=True)
+    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="clients")
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.PROTECT,
+        related_name="clients",
+        null=True, blank=True
+    )
     enterprise = models.ForeignKey(
         Enterprise,
         on_delete=models.PROTECT,
-        related_name="owners"
+        related_name="clients"
     )
+    notes = models.TextField(blank=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.name
 
 class Project(TimeStampedModel):
     name = models.CharField(max_length=100)
@@ -42,8 +48,8 @@ class Project(TimeStampedModel):
         help_text="Unique prefix for order numbers"
     )
     status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name="projects")
-    enterprise = models.ForeignKey(
-        Enterprise,
+    client = models.ForeignKey(
+        Client,
         on_delete=models.PROTECT,
         related_name="projects"
     )

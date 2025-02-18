@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from enterprise.views import EnterpriseViewSet, OwnerViewSet, ProjectViewSet
+from enterprise.views import EnterpriseViewSet, ClientViewSet, ProjectViewSet
 from materials.views import UOMViewSet, MaterialTypeViewSet, MaterialViewSet, MaterialPriceHistoryViewSet
 from inventory.views import InventoryViewSet, InventorySerialNumberViewSet
 from logistics.views import AddressViewSet, ContactViewSet, WarehouseViewSet, CarrierViewSet, CarrierServiceViewSet
@@ -10,7 +10,7 @@ from orders.views import OrderClassViewSet, OrderTypeViewSet, OrderViewSet, Orde
 
 router = routers.DefaultRouter()
 router.register(r'enterprises', EnterpriseViewSet)
-router.register(r'owners', OwnerViewSet)
+router.register(r'owners', ClientViewSet)
 router.register(r'projects', ProjectViewSet)
 router.register(r'uoms', UOMViewSet)
 router.register(r'material-types', MaterialTypeViewSet)
