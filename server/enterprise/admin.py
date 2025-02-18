@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import Enterprise, Client, Project
 
-@admin.register(Enterprise)
-class EnterpriseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lookup_code', 'is_active')
-    search_fields = ('name', 'lookup_code')
+# @admin.register(Enterprise)
+# class EnterpriseAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'lookup_code', 'is_active')
+#     search_fields = ('name', 'lookup_code')
 
 @admin.register(Client)
 class OwnerAdmin(admin.ModelAdmin):
