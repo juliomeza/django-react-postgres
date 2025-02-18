@@ -18,9 +18,9 @@ const Login = () => {
       await login(credentials);
     } catch (err) {
       if (err.response && err.response.status === 401) {
-        setError('Incorrect credentials');
+        setError('Incorrect email address or password');
       } else {
-        setError('Incorrect credentials.');
+        setError('Incorrect email address or password.');
       }
     }
   };
