@@ -12,6 +12,26 @@ A complete authentication system implementation using Django REST Framework for 
 - Scalable system architecture
 - CORS configured for local development
 
+## Using this template
+
+To use this project as a starting point for your own application:
+
+1. Clone the repository:
+```bash
+git clone https://github.com/juliomeza/django-react-httponly-auth.git your-project-name
+```
+
+2. Move into your project directory:
+```bash
+cd your-project-name
+```
+
+3. Remove the existing git repository and initialize a new one:
+```bash
+rm -rf .git
+git init
+```
+
 ## Backend Setup
 
 1. Create and activate a virtual environment:
@@ -73,26 +93,6 @@ The system implements several security measures:
 - Specific CORS configuration
 - Secure session handling
 - Automatic token refresh handling
-
-## Using this template
-
-To use this project as a starting point for your own application:
-
-1. Clone the repository:
-```bash
-git clone https://github.com/juliomeza/django-react-httponly-auth.git your-project-name
-```
-
-2. Move into your project directory:
-```bash
-cd your-project-name
-```
-
-3. Remove the existing git repository and initialize a new one:
-```bash
-rm -rf .git
-git init
-```
 
 ## License
 
