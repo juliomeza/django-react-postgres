@@ -146,7 +146,11 @@ To explore and test the API endpoints interactively, you can use **Swagger** or 
 - **Redoc:** Provides a well-structured and easy-to-read API documentation view.  
   👉 [`http://localhost:8000/redoc/`](http://localhost:8000/redoc/)
 
-Swagger is useful for development and testing, while Redoc offers a more structured documentation experience.
+- **Download Swagger JSON Schema:**  
+  👉 [`http://localhost:8000/swagger.json`](http://localhost:8000/swagger.json) (File will be downloaded)
+
+Swagger is useful for development and testing, while Redoc offers a more structured documentation experience.  
+The JSON schema can be used for API documentation, integrations, or importing into tools like Postman or API clients.
 
 ## Security Features
 
