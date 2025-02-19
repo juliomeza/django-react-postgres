@@ -3,7 +3,7 @@ from .models import Address, Contact, Warehouse, Carrier, CarrierService
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
-    list_display = ('address_line_1', 'city', 'state', 'postal_code', 'country', 'entity_type')
+    list_display = ('address_line_1', 'city', 'state', 'postal_code', 'country', 'entity_type', 'address_type')
     search_fields = ('address_line_1', 'city', 'state', 'postal_code', 'country')
 
 @admin.register(Contact)
@@ -13,7 +13,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(Warehouse)
 class WarehouseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lookup_code', 'address', 'status')
+    list_display = ('name', 'lookup_code', 'address', 'is_active')
     search_fields = ('name', 'lookup_code')
 
 @admin.register(Carrier)

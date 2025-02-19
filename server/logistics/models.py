@@ -42,7 +42,8 @@ class Warehouse(TimeStampedModel):
     name = models.CharField(max_length=100)
     lookup_code = models.CharField(max_length=50, unique=True)
     address = models.ForeignKey(Address, on_delete=models.PROTECT, related_name='warehouses')
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name='warehouses')
+    is_active = models.BooleanField(default=True)
+    #status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name='warehouses')
     notes = models.TextField(blank=True)
 
     def __str__(self):
@@ -56,9 +57,9 @@ class Carrier(TimeStampedModel):
         return self.name
 
 class CarrierService(TimeStampedModel):
+    carrier = models.ForeignKey(Carrier, on_delete=models.PROTECT, related_name='services')
     name = models.CharField(max_length=100)
     lookup_code = models.CharField(max_length=50, unique=True)
-    carrier = models.ForeignKey(Carrier, on_delete=models.PROTECT, related_name='services')
 
     def __str__(self):
         return f"{self.carrier.name} - {self.name}"
