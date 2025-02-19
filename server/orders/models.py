@@ -5,16 +5,25 @@ from logistics.models import Warehouse, Contact, Address, Carrier, CarrierServic
 from materials.models import Material
 from inventory.models import Inventory, InventorySerialNumber
 
+class OrderStatus(TimeStampedModel):
+    status_name = models.CharField(max_length=50)
+    lookup_code = models.CharField(max_length=50, unique=True)
+    description = models.CharField(max_length=50, blank=True)
+    
+    def __str__(self):
+        return self.status_name
+
 class OrderClass(TimeStampedModel):
     class_name = models.CharField(max_length=50)
+    lookup_code = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=50, blank=True)
-    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.class_name
 
 class OrderType(TimeStampedModel):
-    type_name = models.CharField(max_length=100)
+    type_name = models.CharField(max_length=50)
+    lookup_code = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -31,9 +40,9 @@ class Order(TimeStampedModel):
         unique=True,
         help_text="Unique shipment identifier"
     )
-    status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name='orders')
     order_type = models.ForeignKey(OrderType, on_delete=models.PROTECT, related_name='orders')
     order_class = models.ForeignKey(OrderClass, on_delete=models.PROTECT, related_name='orders')
+    order_status = models.ForeignKey(OrderStatus, on_delete=models.PROTECT, related_name='orders')
     project = models.ForeignKey(Project, on_delete=models.PROTECT, related_name='orders')
     warehouse = models.ForeignKey(Warehouse, on_delete=models.PROTECT, related_name='orders')
     contact = models.ForeignKey(Contact, on_delete=models.PROTECT, related_name='orders')
