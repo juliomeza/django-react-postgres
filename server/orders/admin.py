@@ -6,15 +6,15 @@ class OrderClassAdmin(admin.ModelAdmin):
     list_display = ('status_name','lookup_code')
     search_fields = ('status_name','lookup_code')
 
-@admin.register(OrderClass)
-class OrderClassAdmin(admin.ModelAdmin):
-    list_display = ('class_name','lookup_code')
-    search_fields = ('class_name','lookup_code')
-
 @admin.register(OrderType)
 class OrderTypeAdmin(admin.ModelAdmin):
     list_display = ('type_name', 'lookup_code')
     search_fields = ('type_name', 'lookup_code')
+
+@admin.register(OrderClass)
+class OrderClassAdmin(admin.ModelAdmin):
+    list_display = ('class_name','lookup_code', 'order_type')
+    search_fields = ('class_name','lookup_code', 'order_type__type_name')
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):

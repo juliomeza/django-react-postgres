@@ -13,14 +13,6 @@ class OrderStatus(TimeStampedModel):
     def __str__(self):
         return self.status_name
 
-class OrderClass(TimeStampedModel):
-    class_name = models.CharField(max_length=50)
-    lookup_code = models.CharField(max_length=50, unique=True)
-    description = models.CharField(max_length=50, blank=True)
-
-    def __str__(self):
-        return self.class_name
-
 class OrderType(TimeStampedModel):
     type_name = models.CharField(max_length=50)
     lookup_code = models.CharField(max_length=50, unique=True)
@@ -28,6 +20,18 @@ class OrderType(TimeStampedModel):
 
     def __str__(self):
         return self.type_name
+
+class OrderClass(TimeStampedModel):
+    order_type = models.ForeignKey(
+        OrderType,
+        on_delete=models.PROTECT,
+        related_name='order_classes')
+    class_name = models.CharField(max_length=50)
+    lookup_code = models.CharField(max_length=50, unique=True)
+    description = models.CharField(max_length=50, blank=True)
+
+    def __str__(self):
+        return self.class_name
 
 class Order(TimeStampedModel):
     lookup_code_order = models.CharField(
