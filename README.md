@@ -136,6 +136,18 @@ The backend provides a set of API endpoints for managing different modules. Belo
   - `GET /api/addresses/` - List addresses
   - `GET /api/carriers/` - List carriers
 
+## API Documentation (Swagger & Redoc)
+
+To explore and test the API endpoints interactively, you can use **Swagger** or **Redoc**.
+
+- **Swagger UI:** Allows you to test API endpoints directly from the interface.  
+  👉 [`http://localhost:8000/swagger/`](http://localhost:8000/swagger/)
+
+- **Redoc:** Provides a well-structured and easy-to-read API documentation view.  
+  👉 [`http://localhost:8000/redoc/`](http://localhost:8000/redoc/)
+
+Swagger is useful for development and testing, while Redoc offers a more structured documentation experience.
+
 ## Security Features
 
 - JWT tokens stored in HttpOnly cookies
