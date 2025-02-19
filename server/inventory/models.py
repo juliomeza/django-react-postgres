@@ -22,7 +22,7 @@ class Inventory(TimeStampedModel):
     vendor_lot = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
-        return f"{self.license_plate} ({self.quantity})"
+        return f"{self.license_plate}"
 
 class InventorySerialNumber(TimeStampedModel):
     lookup_code = models.CharField(max_length=50, unique=True)
