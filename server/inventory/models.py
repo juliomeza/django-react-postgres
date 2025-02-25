@@ -13,7 +13,7 @@ class Inventory(TimeStampedModel):
     location = models.CharField(max_length=50, blank=True)
     license_plate_id = models.CharField(
         max_length=50,
-        unique=True,
+        #unique=True,
         blank=True,
         validators=[MinLengthValidator(2)]
     )
