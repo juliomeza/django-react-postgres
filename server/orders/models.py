@@ -44,6 +44,12 @@ class Order(TimeStampedModel):
         unique=True,
         help_text="Unique shipment identifier"
     )
+    reference_number = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+        help_text="Reference number from the customer"
+    )
     order_type = models.ForeignKey(OrderType, on_delete=models.PROTECT, related_name='orders')
     order_class = models.ForeignKey(OrderClass, on_delete=models.PROTECT, related_name='orders')
     order_status = models.ForeignKey(OrderStatus, on_delete=models.PROTECT, related_name='orders')
