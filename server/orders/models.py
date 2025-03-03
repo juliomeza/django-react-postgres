@@ -61,6 +61,15 @@ class Order(TimeStampedModel):
     carrier = models.ForeignKey(Carrier, on_delete=models.PROTECT, related_name='orders', null=True, blank=True)
     service_type = models.ForeignKey(CarrierService, on_delete=models.PROTECT, related_name='orders', null=True, blank=True)
     expected_delivery_date = models.DateTimeField(null=True, blank=True)
+    file_generated = models.BooleanField(
+        default=False,
+        help_text="Indicates if a file has been generated for this order"
+    )
+    file_generated_at = models.DateTimeField(
+        null=True, 
+        blank=True,
+        help_text="Date and time when the file was generated"
+    )
     notes = models.TextField(blank=True)
 
     def __str__(self):

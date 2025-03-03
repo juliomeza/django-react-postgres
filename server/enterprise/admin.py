@@ -13,5 +13,5 @@ class OwnerAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lookup_code', 'orders_prefix', 'client', 'is_active')
+    list_display = ('name', 'lookup_code', 'orders_prefix', 'client', 'is_active', 'export_format')
     search_fields = ('name', 'lookup_code')

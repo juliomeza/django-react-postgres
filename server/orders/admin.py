@@ -18,7 +18,7 @@ class OrderClassAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('lookup_code_order', 'order_type', 'project', 'order_status', 'expected_delivery_date')
+    list_display = ('lookup_code_order', 'order_type', 'project', 'order_status', 'file_generated', 'file_generated_at')
     search_fields = ('lookup_code_order', 'lookup_code_shipment')
 
 @admin.register(OrderLine)
