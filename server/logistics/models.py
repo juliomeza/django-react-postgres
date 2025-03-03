@@ -26,8 +26,9 @@ class Address(TimeStampedModel):
         return f"{self.address_line_1}, {self.city}, {self.state} {self.postal_code}"
 
 class Contact(TimeStampedModel):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    company_name = models.CharField(max_length=100)
+    contact_name = models.CharField(max_length=100)
+    attention = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=20)
     email = models.EmailField(validators=[EmailValidator()], blank=True)
     mobile = models.CharField(max_length=20, blank=True)
@@ -36,7 +37,7 @@ class Contact(TimeStampedModel):
     addresses = models.ManyToManyField(Address, related_name='contacts', blank=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.company_name} {self.contact_name}"
 
 class Warehouse(TimeStampedModel):
     name = models.CharField(max_length=100)

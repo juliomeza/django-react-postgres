@@ -8,8 +8,8 @@ class AddressAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'phone', 'email')
-    search_fields = ('first_name', 'last_name', 'email', 'phone')
+    list_display = ('company_name', 'contact_name', 'phone', 'email')
+    search_fields = ('company_name', 'contact_name', 'email', 'phone')
 
 @admin.register(Warehouse)
 class WarehouseAdmin(admin.ModelAdmin):
